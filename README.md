@@ -16,31 +16,31 @@ The design is modular and consists of the following key blocks:
     5] Ensures stable and accurate bit transmission across the entire frame.
 
 2️. UART Receiver (RX)
-  1] Receives serial data asynchronously and reconstructs 8-bit parallel data.
-  2] Detects the start bit and samples incoming data at the center of each bit period to reduce noise sensitivity.
-  3] Implements an FSM to handle:
-     a.Start bit detection
-     b.Data bit reception
-     c.Stop bit validation
-  4] Asserts a data-ready signal once a complete frame is successfully received.
+    1] Receives serial data asynchronously and reconstructs 8-bit parallel data.
+    2] Detects the start bit and samples incoming data at the center of each bit period to reduce noise sensitivity.
+    3] Implements an FSM to handle:
+         a.Start bit detection
+         b.Data bit reception
+         c.Stop bit validation
+    4] Asserts a data-ready signal once a complete frame is successfully received.
 
 3️. Baud Rate Generator
-  1] Generates baud-rate timing using a clock-divider counter.
-  2] Configurable to support standard baud rates (e.g., 9600, 115200).
-  3] Ensures synchronization between TX and RX timing.
+    1] Generates baud-rate timing using a clock-divider counter.
+    2] Configurable to support standard baud rates (e.g., 9600, 115200).
+    3] Ensures synchronization between TX and RX timing.
 
 4. Control Logic
-   1] FSM-based control ensures deterministic state transitions and clean protocol handling.  
-   2] Separate FSMs for TX and RX improve readability and scalability.
-   3] Reset and enable controls are provided for safe operation and integration into larger systems.
+    1] FSM-based control ensures deterministic state transitions and clean protocol handling.  
+    2] Separate FSMs for TX and RX improve readability and scalability.
+    3] Reset and enable controls are provided for safe operation and integration into larger systems.
 
 5. Verification & Testbench
    A self-contained testbench is included to verify:
-   1] Correct TX serialization
-   2] RX data recovery
-   3] Timing accuracy and state transitions
-   4] Loopback-style testing validates end-to-end UART communication.
-   5] Simulation results confirm compliance with UART frame format and timing requirements.
+    1] Correct TX serialization
+    2] RX data recovery
+    3] Timing accuracy and state transitions
+    4] Loopback-style testing validates end-to-end UART communication.
+    5] Simulation results confirm compliance with UART frame format and timing requirements.
 
 # Design Highlights
   1. Fully synthesizable RTL design
